@@ -1,18 +1,16 @@
 <template>
   <v-app>
+    <v-container fluid class="grey lighten-5">
+       <router-view></router-view>
+    </v-container>
   </v-app>
 </template>
 
 <script>
-import Filter from './components/Filter';
-
 export default {
   name: 'App',
-  components: {
-    Filter,
-  },
-  data: () => ({
-    //
-  }),
+  data: () => ({ 
+    // dados para todas as paginas
+  })  
 };
 </script>
