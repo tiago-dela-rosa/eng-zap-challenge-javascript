@@ -14,7 +14,7 @@
               <p v-show="immob.address.neighborhood && immob.address.city">{{immob.address.neighborhood}}, {{immob.address.city}}</p>
 
               <span v-if="immob.pricingInfos.businessType == 'SALE'" class="font-weight-medium display-1 teal--text">{{ immob.pricingInfos.price | currency}}</span>
-              <span v-if="immob.pricingInfos.businessType == 'RENTAL'" class="font-weight-medium display-1 teal--text">{{ immob.pricingInfos.rentalTotalPrice | currency}}</span>  
+              <span v-if="immob.pricingInfos.businessType == 'RENTAL'" class="font-weight-medium display-1 teal--text">{{ immob.pricingInfos.rentalTotalPrice | currency}}</span> 
 
               <span v-if="immob.pricingInfos.monthlyCondoFee > 0" class="grey--text"> <br> + {{immob.pricingInfos.monthlyCondoFee | currency}} Condomínio</span>
               <span v-else class="grey--text"><br>Não possui condomínio</span>
@@ -70,12 +70,13 @@ export default {
    },  
 
    filters: {
-      businessTypeTranslated: function (value) {
+      businessTypeTranslated: function(value){
          switch(value){
             case 'RENTAL' : return 'para Aluguel';
             case 'SALE' : return 'à Venda';
          }
       }
+
    },
 
    watch : {
@@ -98,9 +99,7 @@ export default {
 
 <style>
   .immobile{margin-bottom: 10px;}
-  .immobile:hover{-webkit-box-shadow: 2px 2px 5px 0px rgba(173,173,173,1);
--moz-box-shadow: 2px 2px 5px 0px rgba(173,173,173,1);
-box-shadow: 2px 2px 5px 0px rgba(173,173,173,1);}
+  .immobile:hover{-webkit-box-shadow: 2px 2px 5px 0px rgba(173,173,173,1); -moz-box-shadow: 2px 2px 5px 0px rgba(173,173,173,1); box-shadow: 2px 2px 5px 0px rgba(173,173,173,1);}
   .logo{max-width: 120px; display: inline; margin-right: 10px;}
   .logo:last-child{margin-right: 0px;}
   .zap{max-width: 80px;}  

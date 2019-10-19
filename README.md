@@ -1,34 +1,28 @@
 # eng-zap-challenge-javascript
 
-## Project setup
+## Configuração do projeto
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### Rode o projeto no modo de denvolvimento com hot-realod
 ```
 yarn run serve
 ```
 
-### Compiles and minifies for production
+### Compile o projeto minificado para o modo de produção
 ```
 yarn run build
+
 ```
 
-### Run your tests
+### Rode o projeto no modo de produção
 ```
-yarn run test
+serve dist
+
 ```
 
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Run your unit tests
+### Rode testes de unidade
 ```
 yarn run test:unit
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

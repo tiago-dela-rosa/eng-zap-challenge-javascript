@@ -52,13 +52,13 @@ export default {
 	},
 
 	methods: {
-		async getimmobiles(){
+		async getImmobiles(){
 			try {
 				const response = await axios.get(`http://grupozap-code-challenge.s3-website-us-east-1.amazonaws.com/sources/source-1.json`)
 				return response.data
 			}
 			catch (e) {
-				this.errors.push(e)
+				return console.error('Não foi possivel buscar dados da url requisitada')
 			}	
 		},
 
@@ -108,12 +108,56 @@ export default {
 				console.error(e.message);
 				return false;
 			}
+		},
+
+		validateImmobile(obj){
+			try{
+
+				if(!this.is_locationValid(obj.address.geoLocation.location.lon, obj.address.geoLocation.location.lat))
+					throw new Error("Longitude ou Latitude invalidos")
+				
+				if(immob.pricingInfos.monthlyCondoFee <= 0 || isNaN(immob.pricingInfos.monthlyCondoFee))
+					throw new Error("Valor do condomínio inválido")
+
+				if(this.is_insideBoundingBox(obj.address.geoLocation.location.lon, obj.address.geoLocation.location.lat)){
+					console.log('Imóvel faz parte do boundingBox', [obj.address.geoLocation.location.lon, obj.address.geoLocation.location.lat])
+					tempRentalPrice = this.boundingBoxVivaRealMaxRental;
+				}
+				if(!this.is_insideBoundingBox(obj.address.geoLocation.location.lon, obj.address.geoLocation.location.lat)){
+					console.log('Imóvel não faz parte do boundingBox', [obj.address.geoLocation.location.lon, obj.address.geoLocation.location.lat])
+					tempRentalPrice = obj.pricingInfos.rentalTotalPrice;
+				}				
+			}
+			catch(e){
+				console.error(e.message)
+			}
+			finally{
+				console.table(this.rules.zap.boundingBox)
+			}
+		},
+
+		getImmobile(id){
+			
+			this.getImmobiles().then((resp) => {
+				const search = resp.filter((immob) => {
+					return immob.id == id; 
+				})
+
+				if(search.length > 0){
+					this.validateImmobile(search[0])
+				}
+				else{
+					console.log('Imóvel não encontrado')
+					return false; 
+				}
+
+			})
 		}
 	},
 
 	created(){
 
-		this.getimmobiles().then((resp) => {
+		this.getImmobiles().then((resp) => {
 
 			resp.forEach((immob) => {
 
