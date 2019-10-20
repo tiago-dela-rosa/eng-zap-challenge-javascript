@@ -116,7 +116,7 @@ export default {
 				if(!this.is_locationValid(obj.address.geoLocation.location.lon, obj.address.geoLocation.location.lat))
 					throw new Error("Longitude ou Latitude invalidos")
 				
-				if(immob.pricingInfos.monthlyCondoFee <= 0 || isNaN(immob.pricingInfos.monthlyCondoFee))
+				if(obj.pricingInfos.monthlyCondoFee <= 0 || isNaN(obj.pricingInfos.monthlyCondoFee))
 					throw new Error("Valor do condomínio inválido")
 
 				if(this.is_insideBoundingBox(obj.address.geoLocation.location.lon, obj.address.geoLocation.location.lat)){

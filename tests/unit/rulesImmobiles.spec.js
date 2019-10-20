@@ -3,11 +3,11 @@ import RulesImmobiles from '@/mixins/RulesImmobiles.vue'
 
 describe('RulesImmobiles.vue', () => {
 
-	// test('Retorna imóveis do json', () => {
-	// 	const wrapper = shallowMount(RulesImmobiles)
-	// 	const immobiles = wrapper.vm.getImmobiles()
-	// 	expect.arrayContaining(immobiles)
-	// })
+	test('Retorna imóveis do json', () => {
+		const wrapper = shallowMount(RulesImmobiles)
+		const immobiles = wrapper.vm.getImmobiles()
+		expect.arrayContaining(immobiles)
+	})
 
 	/* 
 		getImmobile(ID_DO_IMOVEL)
