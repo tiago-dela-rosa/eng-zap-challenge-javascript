@@ -17,6 +17,7 @@ yarn install
 ```
 yarn run serve
 ```
+Acesse localhost:8080 
 
 ### Compile o projeto minificado para o modo de produção
 ```
@@ -27,6 +28,7 @@ yarn run build
 ```
 serve dist
 ```
+Acesse localhost:5000
 
 ### Rode testes de unidade
 Abra o arquivo rulesImmobiles.spec.js, defina um ID em getImmobile(ID) para testar as regras de negócio

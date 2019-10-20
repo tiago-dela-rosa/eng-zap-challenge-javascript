@@ -7,11 +7,11 @@
 
     <v-col class="pa-2" md="9" cols="12">
       <div v-if="loading">
-        <v-skeleton-loader v-for="index in 3" height="273" type="card"></v-skeleton-loader>
+        <v-skeleton-loader v-for="index in 3" :key="index" height="273" type="card"></v-skeleton-loader>
       </div>
       <div v-else>
         <v-alert v-if="!loading && filteredImmobs.length <= 0" border="right" colored-border color="teal" icon="mdi-card-search" elevation="2" prominent>
-          Ops, Neste momento não temos imóveis com o perfil que está procurando. <br> Tente <a @click.submit.prevent="filterClear()"  href="#" class="markdown--link markdown--internal teal--text">limpar o filtro</a> para encontrar mais opções.
+          Ops, Neste momento não temos imóveis com o perfil que está procurando. <br> Tente <a @click.prevent="filterClear()"  href="#" class="markdown--link markdown--internal teal--text">limpar o filtro</a> para encontrar mais opções.
         </v-alert>        
         <ListImmobiles :listImmobiles="filteredImmobs" />
       </div>      
